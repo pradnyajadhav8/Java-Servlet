@@ -20,12 +20,11 @@ public class MyServlet extends HttpServlet {
 		out.print("<body>");
 		
 		out.print("<h1>");
-		out.print("Hello Pradnya!");
+		out.print("Hello EveryOne!");
 		out.print("</h1>");
 		
 		out.print("</body>");
 		
-			
 	}
 
 }
