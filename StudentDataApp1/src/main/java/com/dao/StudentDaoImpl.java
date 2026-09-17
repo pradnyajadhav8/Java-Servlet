@@ -71,4 +71,22 @@ public class StudentDaoImpl implements StudentDao {
 		return 0;
 	}
 
+	@Override
+	public int updatestudent(Student upstudent) {
+		String sql = "update student set name=? , marks=? ,gender=? where id=?";
+		Connection con = DBUtility.getDBConnection();
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, upstudent.getName());
+			ps.setDouble(2, upstudent.getMarks());
+			ps.setString(3, upstudent.getGender());
+			ps.setInt(4, upstudent.getId());
+			return ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+
+	}
+
 }

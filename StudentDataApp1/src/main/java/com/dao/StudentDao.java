@@ -12,4 +12,6 @@ public interface StudentDao {
 	
 	List<Student> findAllStudent();
 	
+	int updatestudent(Student updatestudent);
+	
 }

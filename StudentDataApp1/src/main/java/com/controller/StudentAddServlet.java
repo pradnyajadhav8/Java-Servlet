@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +13,15 @@ import com.dao.StudentDaoImpl;
 import com.model.Student;
 import com.dao.StudentDao;
 
+@WebServlet("/add")
 public class StudentAddServlet extends HttpServlet {
+
+	private StudentDao dao;
+	// one time intialization
+
+	public void init() throws ServletException {
+		dao = new StudentDaoImpl();
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +36,7 @@ public class StudentAddServlet extends HttpServlet {
 
 		Student student = new Student(id, name, marks, gender);
 
-		StudentDao dao = new StudentDaoImpl();
+		//StudentDao dao = new StudentDaoImpl();
 
 		int res = dao.addStudent(student);
 
@@ -35,5 +44,6 @@ public class StudentAddServlet extends HttpServlet {
 			out.print("<h1> success!!!</h1>");
 		else
 			out.print("<h1> failed to add </h1>");
+		
 	}
 }
