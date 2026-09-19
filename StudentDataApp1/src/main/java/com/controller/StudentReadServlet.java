@@ -18,13 +18,18 @@ import com.model.Student;
 @WebServlet("/show")
 public class StudentReadServlet extends HttpServlet {
 
+	private StudentDao dao;
+	// one time intialization
+
+	public void init() throws ServletException {
+		dao = new StudentDaoImpl();
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
-
-		StudentDao dao = new StudentDaoImpl();
 
 		List<Student> list = dao.findAllStudent();
 		out.print("<body>");

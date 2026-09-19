@@ -15,7 +15,7 @@ public class StudentDaoImpl implements StudentDao {
 	public int addStudent(Student addstudent) {
 
 		String sql = "insert into student (name,marks,gender) values (?,?,?)";
-		Connection con = DBUtility.getDBConnection();
+		Connection con = DBUtility.getInstance().getDBConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 
@@ -36,7 +36,7 @@ public class StudentDaoImpl implements StudentDao {
 	public List<Student> findAllStudent() {
 		List<Student> list = new ArrayList<>();
 		String sql = "select * from student";
-		Connection con = DBUtility.getDBConnection();
+		Connection con = DBUtility.getInstance().getDBConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -59,7 +59,7 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public int deleteStudent(int id) {
 		String sql = "DELETE FROM STUDENT WHERE id=?";
-		Connection con = DBUtility.getDBConnection();
+		Connection con = DBUtility.getInstance().getDBConnection();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -74,7 +74,7 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public int updatestudent(Student upstudent) {
 		String sql = "update student set name=? , marks=? ,gender=? where id=?";
-		Connection con = DBUtility.getDBConnection();
+		Connection con = DBUtility.getInstance().getDBConnection();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, upstudent.getName());
