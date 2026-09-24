@@ -17,17 +17,16 @@ import com.dao.StudentDao;
 public class StudentAddServlet extends HttpServlet {
 
 	private StudentDao dao;
-	// one time intialization
 
 	public void init() throws ServletException {
 		dao = new StudentDaoImpl();
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse rep) throws ServletException, IOException {
 
-		resp.setContentType("text/html");
-		PrintWriter out = resp.getWriter();
+		rep.setContentType("text/html");
+		PrintWriter out = rep.getWriter();
 
 		int id = Integer.parseInt(req.getParameter("id"));
 		String name = req.getParameter("name");
@@ -35,8 +34,6 @@ public class StudentAddServlet extends HttpServlet {
 		String gender = req.getParameter("gender");
 
 		Student student = new Student(id, name, marks, gender);
-
-		//StudentDao dao = new StudentDaoImpl();
 
 		int res = dao.addStudent(student);
 

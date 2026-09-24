@@ -17,7 +17,6 @@ import com.model.Student;
 public class StudentUpdateServlet extends HttpServlet{
 
 	private StudentDao dao;
-	// one time intialization
 
 	public void init() throws ServletException {
 		dao = new StudentDaoImpl();
@@ -36,15 +35,12 @@ public class StudentUpdateServlet extends HttpServlet{
 
 		Student student = new Student(id, name, marks, gender);
 
-		//StudentDao dao = new StudentDaoImpl();
-
 		int res = dao.updatestudent(student);
 
 		if (res > 0)
 			out.print("<h1> success!!!</h1>");
 		else
 			out.print("<h1> failed to add </h1>");
-		
 		
 	}
 	
