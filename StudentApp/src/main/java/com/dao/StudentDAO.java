@@ -1,5 +1,10 @@
 package com.dao;
 
-public interface StudentDAO {
+import com.model.Student;
 
+public interface StudentDAO {
+	
+	int addStudent(Student student);
+	
+	 
 }
